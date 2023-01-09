@@ -17,7 +17,6 @@ env:
 jobs:
   deploy-aws:
     runs-on: ubuntu-latest
-    needs: build-artifact
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -29,3 +28,8 @@ jobs:
           role-session-name: GithubRole
           role-skip-session-tagging: true
           aws-region: ${{ env.AWS_REGION }}
+
+      - name: Deploy Cloudformation Template
+        run: |
+
+          aws cloudformation deploy --template-file main-stack.yaml --stack-name main-vpc-stack

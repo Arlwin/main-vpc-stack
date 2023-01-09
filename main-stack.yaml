@@ -1,1 +1,12 @@
+Description:  This template deploys the main VPC, with a pair of public and private subnets with each 1 Availability Zones. It deploys an internet gateway, with a default route on the public subnets. It deploys a pair of NAT gateways, and default routes for them in the private subnets.
+
 Resources:
+    MainVpc:
+        Type: 'AWS::EC2::VPC'
+        Properties:
+            CidrBlock: '10.0.0.0/16'
+            EnableDnsSupport: 'true'
+            EnableDnsHostnames: 'true'
+            Tags:
+                - Key: name
+                  Value: main-vpc 
