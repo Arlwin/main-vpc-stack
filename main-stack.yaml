@@ -10,3 +10,17 @@ Resources:
             Tags:
                 - Key: name
                   Value: main-vpc 
+    PrivateSubnetA:
+        Type: 'AWS::EC2::Subnet'
+        Properties:
+            AvailabilityZone: 'us-east-1a'
+            CidrBlock: '10.0.0.0/20'
+            VpcId:
+                Ref: MainVpc
+    PublicSubnetA:
+        Type: 'AWS::EC2::Subnet'
+        Properties:
+            AvailabilityZone: 'us-east-1a'
+            CidrBlock: '10.0.128.0/20'
+            VpcId:
+                Ref: MainVpc
