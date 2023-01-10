@@ -8,7 +8,7 @@ Resources:
             EnableDnsSupport: 'true'
             EnableDnsHostnames: 'true'
             Tags:
-                - Key: name
+                - Key: Name
                   Value: main-vpc 
     PrivateSubnetA:
         Type: 'AWS::EC2::Subnet'
@@ -24,3 +24,16 @@ Resources:
             CidrBlock: '10.0.128.0/20'
             VpcId:
                 Ref: MainVpc
+    MainInternetGateway:
+        Type: 'AWS::EC2::InternetGateway'
+        Properties:
+            Tags:
+                - Key: Name
+                - Value: main-igw
+    MainIgwAttachment:
+        Type: 'AWS::EC2::VPCGatewayAttachment'
+        Properties:
+            VpcId:
+                Ref: MainVpc
+            InternetGatewayId:
+                Ref: MainInternetGateway
